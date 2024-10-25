@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: kubernetes/website
-          sparse-checkout: content/en/docs
+          sparse-checkout: |
+            content/en/docs
           path: ./kubernetes-website
       - name: Test
         run: ./run.sh
