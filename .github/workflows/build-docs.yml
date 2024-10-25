@@ -1,0 +1,19 @@
+name: Build docs
+
+on:
+  schedule:
+    - cron: "5 20 * * SUN"
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: kubernetes/website
+          sparse-checkout: content/en/docs
+          path: ./kubernetes-website
+      - name: Test
+        run: ./run.sh
